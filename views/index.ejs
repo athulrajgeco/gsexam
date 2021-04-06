@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/reg.css">
+    <script src="javascript/validate.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" type="text/css"  href="stylesheets/ststyle.css">
+  </head>
+  <body>
+    <%- include('header'); %>
+    <p id='faclog' onclick="document.getElementById('modal').style.visibility='visible'">Faculty Login</p>
+    <div class="board">
+      <% for(let a=0; a<exams; a++) { %>
+        <div class="notice">
+          <h2>Exam</h2>
+          <p>Faculty</p>
+          <p>Start Time</p>
+          <a href="/st/register"> <button type="button" name="button">Start</button> </a>
+        </div>
+      <% } %>
+    </div>
+    <div class="modal" id="modal">
+      <div class="login">
+      <div class="closeBtn" onclick="document.getElementById('modal').style.visibility='hidden'">&times;</div>
+        <h3>Faculty Login</h3>
+        <form class="det" name='fac' action="/fac/dash" method="post">
+          <label id="l1" for="uname">Enter username</label>
+          <input id="name" type="text" name="uname" value="">
+          <label id="l2" for="password">Enter password</label>
+          <input id="pwd" type="password" name="password" value="">
+          <% if(passValid == false){ %>
+            <label id="msg">Invalid password</label>
+          <% }%>
+          <input id="btn" type="submit" name="" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

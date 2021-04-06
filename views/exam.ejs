@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css"  href="stylesheets/exam.css">
+    <script src="javascript/validate.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <%- include('header'); %>
+    <h3>Question <%= qNum %></h3>
+    <br>
+    <div class="question">
+      <p><%= ques %></p>
+    </div>
+    <br>
+    <h3>Options</h3>
+    <form class="" action="/st/next" method="post">
+      <% options.forEach((item,index)=>{ %>
+        <div class="opts" name="option">
+          <input id="<%= index %>" type="radio" name="opts" value="<%= item %>" onchange="chosen()">
+          <label for="<%= index %>"><%= item %></label>
+        </div>
+      <% }) %>
+      <div class="opts">
+        <input id="skip" type="radio" name="opts" value="Skip" onchange="chosen()" checked>
+        <label for="skip">Skip this question</label>
+      </div>
+      <br>
+      <div class="opts chosen">
+        <p id="chosen">You chose to <strong>Skip this question</strong></p>
+        <br>
+        <input type="submit" name="" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'Timeburnerbold';
+    src: url('../fonts/timeburnerbold.woff') format('woff');
+}
+
+h1{
+  font-family: 'Timeburnerbold';
+  text-align: center;
+  font-size: 45px;
+  color: indigo;
+}
+hr{
+  border-top: 4px solid grey;
+}
+
+#crBtn{
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.navBtn{
+  width: 20%;
+  padding: 8px;
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: serif;
+  margin-top: 0;
+}
+.navBtn:hover{
+  background-color: black;
+}
+
+#new{
+  display: none;
+  min-height: 800px;
+}
+#sch{
+  display: none;
+}
+#res{
+  display: none;
+}
+#prof{
+  display: block;
+}
+
+.form{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  width: 700px;
+  margin: 20px auto;
+  margin-top: 25px;
+
+}
+label{
+  margin: 10px 5px;
+  text-align: right;
+  font-weight: bold;
+}
+input{
+  margin: 10px 5px;
+  height: 20px;
+}
+.item{
+  font-weight: bold;
+  text-align: right;
+  padding: 2px 15px;
+  margin-bottom: 10px;
+}
+#email{
+  display: inline-block;
+  padding: 2px 5px;
+  width: 250px;
+}
+.edit{
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: white;
+}
+.btn{
+  display: inline-block;
+  margin-left: 12px
+}
+.pwdCh{
+  margin: 15px auto;
+  height: 35px;
+  width: 180px;
+  font-size: 16px;
+}
+#chPass{
+  display: none;
+}
+
+@keyframes showmsg {
+  0%{
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  30%, 75%{
+    opacity: 1;
+    transform: translateY(-200px);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+.msg{
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  border-radius: 12px;
+  padding: 8px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: mediumseagreen;
+  background-color: beige;
+  margin: 10px auto;
+  animation: showmsg 5s linear;
+  animation-fill-mode: forwards;
+}
+#logout{
+  height: 40px;
+  box-sizing: content-box;
+  color: #d40000;
+}
+#logoutText{
+  padding: 8px;
+  font-size: 22px;
+}
+.qa{
+  margin: 15px 5px 10px 25px;
+  color: indigo;
+  padding: 5px;
+}
+textarea{
+  display: block;
+}
+.answers{
+  background-color: bisque;
+  padding: 10px;
+}
+.txt{
+background-color: burlywood;
+padding: 5px;
+}

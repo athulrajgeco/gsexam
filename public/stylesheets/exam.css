@@ -1,0 +1,21 @@
+.question{
+  background-color: beige;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: auto;
+  width: 90%;
+  padding: 15px 8px;
+}
+.opts{
+  background-color: ghostwhite;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 70%;
+  margin: 10px 25px;
+  padding: 10px;
+}
+.chosen{
+  background-color: lightblue;
+}

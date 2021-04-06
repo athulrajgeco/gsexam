@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="javascript/dashboard.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/dash.css">
+  </head>
+  <body>
+    <%- include('header'); %>
+    <h1><%= facName %>'s  Dashboard </h1>
+    <div style="height:38px;">
+      <button type="button" id="btn1" class="navBtn" onclick="nav('btn1','new')">Create New Exam</button>
+      <button type="button" id="btn2" class="navBtn" onclick="nav('btn2','sch')">Schedule an Exam</button>
+      <button type="button" id="btn3" class="navBtn" onclick="nav('btn3','view')">View Exams</button>
+      <button type="button" id="btn4" class="navBtn" onclick="nav('btn4','res')">Results</button>
+      <button type="button" id="btn5" class="navBtn" onclick="nav('btn5','prof')">Profile</button>
+    </div>
+    <div id="new" class="content">
+      <div class="qa" id="create">
+        <label for="exName">Name of Exam</label>
+        <input type="text" name="exName" id="exName" value="">
+        <button type="button" id="crBtn" onclick="crExam()">Create Exam</button>
+      </div>
+      <div id="ques" style="display:none;">
+        <h3 id="qNum"></h3>
+        <div class="qa">
+          <h4>Question</h4>
+          <textarea id="qnText" rows="4" cols="80"></textarea>
+          <label for="qImg">Add Images</label>
+          <input id="fileList" type="file" name="qImg" value="" multiple onchange="chosenFiles(this)">
+          <div id="imgPrv"></div>
+        </div>
+        <form class="qa" name="exType">
+          <input id="mcqBtn" type="radio" name="examType" value="mcq" checked onchange="eType(this)">
+          <label for="mcqBtn">Multiple Choice</label>
+          <input id="txtBtn" type="radio" name="examType" value="txt" onchange="eType(this)" style="margin-left:50px;">
+          <label for="txtBtn">Text Input</label>
+          <br>
+        </form>
+        <div class="qa answers" id="mcq" style="display:block;">
+          <textarea id="enteredOpts" onchange="parseOpt()" onkeyup="delNode('sel')" name="name" rows="8" cols="80" placeholder="Option1\nOption2\nOption3"></textarea>
+          <label for="cAnswer">Choose correct answer</label>
+          <select id="sel" class="" name="cAnswer" onchange="abc(this)"></select>
+        </div>
+        <div class="qa answers" id="txt" style="display:none;">
+          <p style="font-weight:bold;">Choose nature of answer</p>
+          <form name="txtAnType">
+            <input id="numBtn" type="radio" name="numstr" value="num" checked onclick="aType(this)">
+            <label for="numBtn">Numerical value</label>
+            <input id="strBtn" type="radio" name="numstr" value="str" onclick="aType(this)">
+            <label for="strBtn">String value</label>
+          </form>
+          <div class="qa txt" id="num" style="display:block;">
+            <label for="minv">Minimum value</label>
+            <input id="minv" type="text" name="minv" value="">
+            <label for="maxv">Maximum value</label>
+            <input id="maxv" type="text" name="maxv" value="">
+          </div>
+          <div class="qa txt" id="str" style="display:none;">
+            <label for="strv">Correct Answer</label>
+            <input id="strv" type="text" name="strv" value="">
+          </div>
+        </div>
+        <button type="button" name="button" onclick="upload()">Upload Question</button>
+      </div>
+    </div>
+    <div id="sch" class="content">
+      <form class="form" name="examDetails" action="/fac/new" onsubmit="return validate(event)" method="post">
+        <label for="examName">Exam Name</label>
+        <input type="text" name="examName" value="">
+        <label for="examDate">Exam Date</label>
+        <input type="date" name="examDate" value="">
+        <label for="examTime">Exam Time</label>
+        <input type="time" name="examTime" value="">
+        <label for="pwd">Add Password</label>
+        <input type="password" name="pwd" value="">
+        <label for="pwd">Confirm Password</label>
+        <input type="password" name="pwd" value="">
+        <label for="showPwd">Show Password</label>
+        <input type="checkbox" name="showPwd" onclick="showPass()">
+        <br>
+        <input type="submit" name="" style="width:120px; height: 34px;" value="Create">
+      </form>
+    </div>
+    <div id="view" class="content">
+      <p>sch</p>
+    </div>
+    <div id="res" class="content">
+      <p>res</p>
+    </div>
+    <div id="prof" class="content">
+      <div class="form">
+        <p class="item">Username</p>
+        <p style="padding-top:2px;"><%= userName %></p>
+        <p class="item">Email ID</p>
+        <div class="">
+          <p contenteditable="false" id='email'><%= email %></p>
+          <button type="button" name="button" class="btn" onclick="change('email',this)">Change</button>
+        </div>
+      </div>
+      <button type="button" name="button" class="pwdCh" onclick="chPwd(this)">Change Password</button>
+      <form class="form" id="chPass" action="/fac/updateprofile" onsubmit="return validatePass()" method="post">
+        <label for="curPwd">Current Password</label>
+        <input type="password" name="curPwd" value="">
+        <label for="newPwd">New Password</label>
+        <input type="password" name="newPwd" value="">
+        <label for="renewPwd">Current Password</label>
+        <input type="password" name="renewPwd" value="">
+        <label for="showPwd">Show Password</label>
+        <input type="checkbox" name="showPwd" value="">
+        <br>
+        <input type="submit" name="" style="width:120px; height: 34px;" value="Save & Submit">
+      </form>
+      <a href="/" style="text-decoration:none;"><button type="button" name="button" id="logout"><span id="logoutText">Logout</span><img src="../logout.png" alt=""  style="height:25px"></button></a>
+      <div class="msg">
+        <p>Changes saved successfully</p>
+      </div>
+    </div>
+  </body>
+</html>
